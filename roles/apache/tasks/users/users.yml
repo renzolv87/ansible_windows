@@ -1,0 +1,8 @@
+---
+- name: Ensure user apache is present
+  win_user:
+    name: apache 
+    password: "ApaP4ssw0rd"
+    state: present
+    groups:
+      - Users

@@ -1,0 +1,18 @@
+---
+- hosts: nodes
+  tasks:
+  - name: Start Service Spooler
+    win_service:
+      name: spooler
+      state: started 
+    register: service_spooler
+ 
+  - name: Execute command in Windows
+    win_shell: dir
+    args:
+        executable: cmd
+    register: out
+    when: service_spooler.state != "running" 
+
+  #- debug: var=out.stdout_lines
+  #- debug: var=service_info

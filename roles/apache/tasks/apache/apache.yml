@@ -1,0 +1,18 @@
+---
+- name: Create directory to download apache 
+  win_file:
+    path: "{{ apache_download_dir }}"
+    state: directory
+
+- name: Download the Apache installer
+  win_get_url:
+    url: https://archive.apache.org/dist/httpd/binaries/win32/httpd-2.2.25-win32-x86-no_ssl.msi
+    dest: '{{ apache_download_dir }}'
+
+- name: Install MSI
+  win_package:
+    path: '{{ apache_download_dir }}\httpd-2.2.25-win32-x86-no_ssl.msi'
+    arguments:
+      - /install
+      - /passive
+      - /norestart

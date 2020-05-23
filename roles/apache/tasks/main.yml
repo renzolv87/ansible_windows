@@ -1,0 +1,9 @@
+---
+# tasks file for apache
+
+- import_tasks: users/users.yml
+  tags: users
+
+- import_tasks: apache/apache.yml
+  tags: apache
+
