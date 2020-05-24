@@ -9,10 +9,34 @@
     url: https://archive.apache.org/dist/httpd/binaries/win32/httpd-2.2.25-win32-x86-no_ssl.msi
     dest: '{{ apache_download_dir }}'
 
-- name: Install MSI
+- name: Install MSI of Apache
   win_package:
     path: '{{ apache_download_dir }}\httpd-2.2.25-win32-x86-no_ssl.msi'
-    arguments:
-      - /install
-      - /passive
-      - /norestart
+    state: present
+
+- name: Set ServerAdmin email adress 
+  win_lineinfile:
+    path: C:\Program Files (x86)\Apache Software Foundation\Apache2.2\conf\httpd.conf
+    regex: '^ServerAdmin'
+    line: 'ServerAdmin renzo@windows.com'
+
+- name: Copy a index.html file
+  win_copy:
+    src: index.html.renzo 
+    dest: C:\Program Files (x86)\Apache Software Foundation\Apache2.2\htdocs\index.html
+
+- name: Check if Service Apache2.2 exists
+  win_service:
+    name: Apache2.2 
+  register: apache_service 
+
+#- name: debug
+#  debug:
+#    var: apache_service
+
+- name: create apache service
+  win_shell: '"C:\Program Files (x86)\Apache Software Foundation\Apache2.2\bin\httpd.exe" -k install'
+  args:
+    executable: cmd
+  notify: Start Service Apache2.2
+  when: not apache_service.exists

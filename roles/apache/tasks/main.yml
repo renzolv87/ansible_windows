@@ -7,3 +7,6 @@
 - import_tasks: apache/apache.yml
   tags: apache
 
+- import_tasks: notepad/notepad.yml
+  tags: notepad++ 
+
