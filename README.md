@@ -1,6 +1,6 @@
-==Instalar en Windows==
-===En el cliente Windows===
-* '''Documentación oficial:''' https://docs.ansible.com/ansible/latest/user_guide/windows_setup.html
+#Instalar en Windows
+##En el cliente Windows
+* *Documentación oficial:* https://docs.ansible.com/ansible/latest/user_guide/windows_setup.html
 
 * Validar PowerShell Version
 <pre>
@@ -41,7 +41,7 @@ Remove-ItemProperty -Path $reg_winlogon_path -Name DefaultUserName -ErrorAction 
 Remove-ItemProperty -Path $reg_winlogon_path -Name DefaultPassword -ErrorAction SilentlyContinue
 </pre>
 
-* '''OMITIR:''' Si tuviéramos versión de power shell 3 hay que ejecutar el WinRM Memory Hotfix
+* *OMITIR:* Si tuviéramos versión de power shell 3 hay que ejecutar el WinRM Memory Hotfix
 <pre>
 $url = "https://raw.githubusercontent.com/jborean93/ansible-windows/master/scripts/Install-WMF3Hotfix.ps1"
 $file = "$env:temp\Install-WMF3Hotfix.ps1"
@@ -70,7 +70,7 @@ winrm enumerate winrm/config/Listener
 winrs -r:http://windows:5985/wsman -u:rlujan -p:rlujan ipconfig
 </pre>
 
-===En Ansible Master===
+#En Ansible Master
 * https://www.vultr.com/docs/how-to-install-and-configure-ansible-on-centos-7-for-use-with-windows-server
 * https://docs.ansible.com/ansible/latest/user_guide/windows_winrm.html
 
@@ -184,4 +184,4 @@ http://localhost/
 </pre>
 
 * Más Ejemplos:
-:* https://geekflare.com/ansible-playbook-windows-example/
+  * https://geekflare.com/ansible-playbook-windows-example/
