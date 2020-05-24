@@ -136,6 +136,13 @@ windows | SUCCESS => {
 [root@ansible ansible_windows]# 
 </pre>
 
+* Ansible windows modules:
+ * **Online:** https://docs.ansible.com/ansible/latest/modules/list_of_windows_modules.html
+ * **On server:** 
+<pre>
+ansible-doc win_copy
+</pre>
+
 * Si tuviéramos encriptado las variables:
 <pre>
 ansible -m win_ping windows --ask-vault-pass
