@@ -1,6 +1,10 @@
-#Instalar en Windows
+- [Instalar en Windows](#instalar-en-windows)
+  * [En el cliente Windows](#en-el-cliente-windows)
+  * [En Ansible Master](#en-ansible-master)
 
-##En el cliente Windows
+# Instalar en Windows
+
+## En el cliente Windows
 * **Documentación oficial:** https://docs.ansible.com/ansible/latest/user_guide/windows_setup.html
 
 * Validar PowerShell Version
@@ -27,13 +31,13 @@ $password = "rlujan"
 (New-Object -TypeName System.Net.WebClient).DownloadFile($url, $file)
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force
 
-# Version can be 3.0, 4.0 or 5.1
+#Version can be 3.0, 4.0 or 5.1
 &$file -Version 5.1 -Username $username -Password $password -Verbose
 </pre>
 
 * Remove auto logon and set the execution policy back to the default of Restricted. You can do this with the following PowerShell commands:
 <pre>
-# This isn't needed but is a good security practice to complete
+#This isn't needed but is a good security practice to complete
 Set-ExecutionPolicy -ExecutionPolicy Restricted -Force
 
 $reg_winlogon_path = "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon"
@@ -71,7 +75,7 @@ winrm enumerate winrm/config/Listener
 winrs -r:http://windows:5985/wsman -u:rlujan -p:rlujan ipconfig
 </pre>
 
-#En Ansible Master
+## En Ansible Master
 * https://www.vultr.com/docs/how-to-install-and-configure-ansible-on-centos-7-for-use-with-windows-server
 * https://docs.ansible.com/ansible/latest/user_guide/windows_winrm.html
 
