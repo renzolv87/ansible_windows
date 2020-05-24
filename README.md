@@ -1,4 +1,5 @@
 #Instalar en Windows
+
 ##En el cliente Windows
 * *Documentación oficial:* https://docs.ansible.com/ansible/latest/user_guide/windows_setup.html
 
