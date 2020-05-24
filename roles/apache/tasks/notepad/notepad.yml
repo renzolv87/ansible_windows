@@ -1,0 +1,29 @@
+---
+- name: Download notepad++ installer
+  win_get_url:
+    url: https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v7.8.6/npp.7.8.6.Installer.x64.exe
+    dest: '{{ apache_download_dir }}'
+  when: ansible_os_family == 'Windows'
+
+- name: Install notepad++ 
+  win_package:
+    path: '{{ apache_download_dir }}\npp.7.8.6.Installer.x64.exe'
+    arguments: '/S'
+    product_id: "Notepad++"
+    state: present
+  when: ansible_os_family == 'Windows'
+
+- name: Check Path Variable on Windows hosts
+  win_shell: $Env:Path
+  register: path
+  changed_when: False
+  when: ansible_os_family == 'Windows'
+
+- name: Add Notepad++ to Path Variable on Windows hosts
+  win_environment:
+    state: present
+    name: Path
+    value: '{{ path.stdout }};C:\Program Files (x86)\Notepad++'
+    level: machine
+  when: (path.stdout.find('Notepad++') == -1 ) and
+        (ansible_os_family == 'Windows')
