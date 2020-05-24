@@ -1,7 +1,7 @@
 #Instalar en Windows
 
 ##En el cliente Windows
-* *Documentación oficial:* https://docs.ansible.com/ansible/latest/user_guide/windows_setup.html
+* **Documentación oficial:** https://docs.ansible.com/ansible/latest/user_guide/windows_setup.html
 
 * Validar PowerShell Version
 <pre>
@@ -42,7 +42,7 @@ Remove-ItemProperty -Path $reg_winlogon_path -Name DefaultUserName -ErrorAction 
 Remove-ItemProperty -Path $reg_winlogon_path -Name DefaultPassword -ErrorAction SilentlyContinue
 </pre>
 
-* *OMITIR:* Si tuviéramos versión de power shell 3 hay que ejecutar el WinRM Memory Hotfix
+* **OMITIR:** Si tuviéramos versión de power shell 3 hay que ejecutar el WinRM Memory Hotfix
 <pre>
 $url = "https://raw.githubusercontent.com/jborean93/ansible-windows/master/scripts/Install-WMF3Hotfix.ps1"
 $file = "$env:temp\Install-WMF3Hotfix.ps1"
