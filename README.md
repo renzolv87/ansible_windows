@@ -162,6 +162,18 @@ ansible -m win_service -a "name=spooler state=stopped" windows
 ansible -m win_service -a "name=spooler state=started" windows
 </pre>
 
+* Playbooks:
+<pre>
+[root@ansible ansible_windows]# pwd
+/etc/ansible_windows
+[root@ansible ansible_windows]# ls -l ansible.cfg hosts
+-rw-r--r-- 1 root root 184 May 24 01:03 ansible.cfg
+-rw-r--r-- 1 root root  16 May 24 00:06 hosts
+[root@ansible ansible_windows]# 
+
+ansible-playbook playbooks/demo.yml 
+</pre>
+
 * Roles:
 <pre>
 ansible-galaxy init apache
