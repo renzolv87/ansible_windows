@@ -1,5 +1,6 @@
 [nodes]
 windows
+windows2
 
 [nodes:vars]
 ansible_ssh_user=rlujan
