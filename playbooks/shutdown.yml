@@ -1,0 +1,5 @@
+---
+- hosts: nodes
+  tasks:
+  - name: shutdown all my windows vms
+    raw: shutdown /s /t 0
