@@ -1,0 +1,5 @@
+ansible_ssh_user: rlujan
+ansible_ssh_pass: y\puG@v{tWeB{23S6]gX
+ansible_ssh_port: 5986
+ansible_connection: winrm
+ansible_winrm_server_cert_validation: ignore
