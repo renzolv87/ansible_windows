@@ -172,6 +172,7 @@ ansible -m win_service -a "name=spooler state=started" windows
 -rw-r--r-- 1 root root  16 May 24 00:06 hosts
 [root@ansible ansible_windows]# 
 
+ansible-playbook playbooks/demo.yml --check
 ansible-playbook playbooks/demo.yml 
 </pre>
 
@@ -187,6 +188,9 @@ Server Manager -> Tools -> Computer Management -> Local Users and Groups -> User
 
 * Rol run:
 <pre>
+ansible-playbook masterplaybooks/win_apache.yml --extra-vars="hosts=windows" --tags=notepad --check
+ansible-playbook masterplaybooks/win_apache.yml --extra-vars="hosts=windows" --tags=notepad
+
 ansible-playbook masterplaybooks/win_apache.yml --extra-vars="hosts=windows"
 </pre>
 
