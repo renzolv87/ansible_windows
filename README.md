@@ -139,10 +139,7 @@ windows | SUCCESS => {
 
 * Ansible windows modules:
  * **Online:** https://docs.ansible.com/ansible/latest/modules/list_of_windows_modules.html
- * **On server:** 
-<pre>
-ansible-doc win_copy
-</pre>
+ * **On server:** ansible-doc win_copy
 
 * Si tuviéramos encriptado las variables:
 <pre>
