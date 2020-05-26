@@ -179,7 +179,7 @@ ansible-galaxy init apache
 </pre>
 
 * Componentes de un rol:
- * **defaults**: Data sobre el rol / aplicación (variables por defecto).
+:* **defaults**: Data sobre el rol / aplicación (variables por defecto).
  * **files**: Poner ficheros estáticos aquí. Ficheros que copiaremos a los clientes.
  * **handlers**: Tareas que se basan en algunas acciones. Disparadores (Triggers). Ex: si cambias httpd.conf -> reinicia el servicio.
  * **meta**: Metadatos/Información sobre el rol (Autor, plataformas soportadas, dependencias, etc).
