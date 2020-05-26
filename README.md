@@ -181,6 +181,16 @@ ansible-playbook playbooks/demo.yml
 ansible-galaxy init apache
 </pre>
 
+* Componentes de un rol:
+** **defaults**: Data sobre el rol / aplicación (variables por defecto).
+** **files**: Poner ficheros estáticos aquí. Ficheros que copiaremos a los clientes.
+** **handlers**: Tareas que se basan en algunas acciones. Disparadores (Triggers). Ex: si cambias httpd.conf -> reinicia el servicio.
+** **meta**: Metadatos/Información sobre el rol (Autor, plataformas soportadas, dependencias, etc).
+** **tasks**: Core lógico o código. Ex: Instala paquetes, copia ficheros, configura, etc.
+** **templates**: similar a files pero soportan modificaciones (ficheros dinámicos no estáticos) -> Jinja2 template language.
+** **vars**: Tanto vars como defaults guardan variables pero las variables en vars tienen mayor prioridad.
+** Todos tienen el main.yml que es donde inicia la lectura de cada código.
+
 * En cliente windows para ver usuarios:
 <pre>
 Server Manager -> Tools -> Computer Management -> Local Users and Groups -> Users
