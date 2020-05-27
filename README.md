@@ -1,6 +1,6 @@
 - [Windows](#windows)
   * [Preparar el cliente Windows](#preparar-el-cliente-windows)
-  * [En Ansible Master (Linux o WSL)](#en-ansible-master-(linux-o-wsl))
+  * [En Ansible Master](#en-ansible-master)
   * [Variables a nivel de inventario](#variables-a-nivel-de-inventario)
   * [Ansible vault para encriptar y guardar información sensible](#ansible-vault-para-encriptar-y-guardar-informaci-n-sensible)
   * [Ansible Windows Modules](#ansible-windows-modules)
@@ -80,7 +80,8 @@ winrm enumerate winrm/config/Listener
 winrs -r:http://windows:5985/wsman -u:rlujan -p:rlujan ipconfig
 </pre>
 
-## En Ansible Master (Linux o WSL)
+## En Ansible Master
+* **Soportado solo en OS Linux**
 * https://blog.deiser.com/es/primeros-pasos-con-ansible
 * https://www.vultr.com/docs/how-to-install-and-configure-ansible-on-centos-7-for-use-with-windows-server
 * https://docs.ansible.com/ansible/latest/user_guide/windows_winrm.html
