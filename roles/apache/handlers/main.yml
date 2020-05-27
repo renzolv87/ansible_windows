@@ -1,6 +1,7 @@
 ---
 # handlers file for apache
-- name: Start Service Apache2.2 
+- name: Iniciamos el servicio Apache2.2 
   win_service:
     name: Apache2.2 
     state: started 
+  listen: "Start Service Apache2.2"
