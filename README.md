@@ -198,7 +198,7 @@ ansible-galaxy init apache
 * **Componentes de un rol:**
   * **defaults**: Data sobre el rol / aplicación (variables por defecto).
   * **files**: Poner ficheros estáticos aquí. Ficheros que copiaremos a los clientes.
-  * **handlers**: Tareas que se basan en algunas acciones. Disparadores (Triggers). Ex: si cambias httpd.conf -> reinicia el servicio.
+  * **handlers**: Tareas que se basan en algunas acciones. Disparadores (Triggers). Ex: si cambias httpd.conf -> reinicia el servicio. (https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html#handlers-running-operations-on-change)
   * **meta**: Metadatos/Información sobre el rol (Autor, plataformas soportadas, dependencias, etc).
   * **tasks**: Core lógico o código. Ex: Instala paquetes, copia ficheros, configura, etc.
   * **templates**: similar a files pero soportan modificaciones (ficheros dinámicos no estáticos) -> Jinja2 template language.
