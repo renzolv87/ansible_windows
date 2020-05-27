@@ -84,7 +84,7 @@ winrs -r:http://windows:5985/wsman -u:rlujan -p:rlujan ipconfig
 <pre>
 [root@ansible ansible_windows]# cat ansible.cfg
 [defaults]
-roles_path    = /etc/ansible/roles:/usr/share/ansible/roles
+roles_path    = ./roles
 inventory     = ./hosts
 [privilege_escalation]
 [paramiko_connection]
@@ -108,6 +108,8 @@ pip install pywinrm
 <pre>
 mkdir group_vars
 cd group_vars
+
+//Ansible vault para encriptar y guardar información sensible:
 ansible-vault create nodes.yml
 
 ansible-vault edit nodes.yml 
@@ -137,11 +139,11 @@ windows | SUCCESS => {
 [root@ansible ansible_windows]# 
 </pre>
 
-* Ansible windows modules:
- * **Online:** https://docs.ansible.com/ansible/latest/modules/list_of_windows_modules.html
+* Ansible windows modules: https://docs.ansible.com/ansible/latest/modules/list_of_windows_modules.html
+ * **Online:** https://docs.ansible.com/ansible/latest/modules/win_copy_module.html
  * **On server:** ansible-doc win_copy
 
-* Si tuviéramos encriptado las variables:
+* Si he de lanzar modulos con yamls encriptados:
 <pre>
 ansible -m win_ping windows --ask-vault-pass
 </pre>
@@ -153,7 +155,8 @@ ansible -m setup nodes
 ansible -m win_disk_facts windows | more
 </pre>
 
-* En el cliente windows vamos a Services, buscamos Print Spooler y vemos que esta Running y lo pararemos desde ansible:
+* Ejecutar modulos Ad-hoc
+  * En el cliente windows vamos a Services, buscamos Print Spooler y vemos que esta Running y lo pararemos desde ansible:
 <pre>
 ansible -m win_service -a "name=spooler state=stopped" windows
 
@@ -201,7 +204,15 @@ ansible-playbook masterplaybooks/win_apache.yml --extra-vars="hosts=windows" --t
 ansible-playbook masterplaybooks/win_apache.yml --extra-vars="hosts=windows"
 </pre>
 
-* En cmd:
+* Validar que funciona, abrir navegador:
+<pre>
+http://localhost/
+</pre>
+
+* Más Ejemplos:
+  * https://geekflare.com/ansible-playbook-windows-example/
+
+* Cómo configurar apache como servicio en linea de comandos:
 <pre>
 C:\Program Files (x86)\Apache Software Foundation\Apache2.2\bin>httpd.exe -v
 Server version: Apache/2.2.25 (Win32)
@@ -214,10 +225,3 @@ C:\Program Files (x86)\Apache Software Foundation\Apache2.2\bin>
 del "C:\Program Files (x86)\Apache Software Foundation\Apache2.2\htdocs\index.html"
 </pre>
 
-* Probar que funciona, abrir navegador:
-<pre>
-http://localhost/
-</pre>
-
-* Más Ejemplos:
-  * https://geekflare.com/ansible-playbook-windows-example/
