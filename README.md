@@ -2,7 +2,7 @@
   * [Preparar el cliente Windows](#preparar-el-cliente-windows)
   * [En Ansible Master](#en-ansible-master)
   * [Variables a nivel de inventario](#variables-a-nivel-de-inventario)
-  * [Ansible vault para encriptar y guardar información sensible](#ansible-vault-para-encriptar-y-guardar-informaci-n-sensible)
+  * [Ansible vault para encriptar y guardar información sensible](#ansible-vault-para-encriptar-y-guardar-información-sensible)
   * [Ansible Windows Modules](#ansible-windows-modules)
   * [Playbooks](#playbooks)
   * [Roles](#roles)
