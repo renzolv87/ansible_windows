@@ -1,10 +1,14 @@
-- [Instalar en Windows](#instalar-en-windows)
-  * [En el cliente Windows](#en-el-cliente-windows)
-  * [En Ansible Master](#en-ansible-master)
+- [Windows](#windows)
+  * [Preparar el cliente Windows](#preparar-el-cliente-windows)
+  * [En Ansible Master (Linux o WSL)](#en-ansible-master--linux-o-wsl-)
+  * [Variables a nivel de inventario](#variables-a-nivel-de-inventario)
+  * [Ansible vault para encriptar y guardar información sensible](#ansible-vault-para-encriptar-y-guardar-informaci-n-sensible)
+  * [Ansible Windows Modules](#ansible-windows-modules)
+  * [Playbooks](#playbooks)
+  * [Roles](#roles)
 
-# Instalar en Windows
-
-## En el cliente Windows
+# Windows
+## Preparar el cliente Windows
 * **Documentación oficial:** https://docs.ansible.com/ansible/latest/user_guide/windows_setup.html
 * **Preguntas Frecuentes:** https://docs.ansible.com/ansible/latest/user_guide/windows_faq.html
 
@@ -76,7 +80,8 @@ winrm enumerate winrm/config/Listener
 winrs -r:http://windows:5985/wsman -u:rlujan -p:rlujan ipconfig
 </pre>
 
-## En Ansible Master
+## En Ansible Master (Linux o WSL)
+* https://blog.deiser.com/es/primeros-pasos-con-ansible
 * https://www.vultr.com/docs/how-to-install-and-configure-ansible-on-centos-7-for-use-with-windows-server
 * https://docs.ansible.com/ansible/latest/user_guide/windows_winrm.html
 
@@ -97,19 +102,24 @@ inventory     = ./hosts
 [root@ansible ansible_windows]# 
 </pre>
 
-* En el servidor master de ansible instalamos pywinrm:
+* En el servidor master de ansible instalamos pywinrm (necesario para interactuar con winrm):
 <pre>
 yum install epel-release
 yum -y install python-pip pip
 pip install pywinrm
 </pre>
 
-* Configuramos las variables de conexión en el groupvars:
+## Variables a nivel de inventario
+  * https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html
 <pre>
-mkdir group_vars
-cd group_vars
+group_vars
+host_Vars
+</pre>
 
-//Ansible vault para encriptar y guardar información sensible:
+* Configuramos las variables de conexión en el groupvars.
+
+## Ansible vault para encriptar y guardar información sensible
+<pre>
 ansible-vault create nodes.yml
 
 ansible-vault edit nodes.yml 
@@ -139,23 +149,24 @@ windows | SUCCESS => {
 [root@ansible ansible_windows]# 
 </pre>
 
-* Ansible windows modules: https://docs.ansible.com/ansible/latest/modules/list_of_windows_modules.html
+## Ansible Windows Modules
+ * **Todos:** https://docs.ansible.com/ansible/latest/modules/list_of_windows_modules.html
  * **Online:** https://docs.ansible.com/ansible/latest/modules/win_copy_module.html
  * **On server:** ansible-doc win_copy
 
-* Si he de lanzar modulos con yamls encriptados:
+* **Si he de lanzar modulos con yamls encriptados:**
 <pre>
 ansible -m win_ping windows --ask-vault-pass
 </pre>
 
-* Facters:
+* **Facters:**
 <pre>
 ansible -m setup nodes
 
 ansible -m win_disk_facts windows | more
 </pre>
 
-* Ejecutar modulos Ad-hoc
+* **Ejecutar modulos Ad-hoc:**
   * En el cliente windows vamos a Services, buscamos Print Spooler y vemos que esta Running y lo pararemos desde ansible:
 <pre>
 ansible -m win_service -a "name=spooler state=stopped" windows
@@ -163,7 +174,7 @@ ansible -m win_service -a "name=spooler state=stopped" windows
 ansible -m win_service -a "name=spooler state=started" windows
 </pre>
 
-* Playbooks:
+## Playbooks
 <pre>
 [root@ansible ansible_windows]# pwd
 /etc/ansible_windows
@@ -176,12 +187,14 @@ ansible-playbook playbooks/demo.yml --check
 ansible-playbook playbooks/demo.yml 
 </pre>
 
-* Roles:
+* **Idempotencia:** es la propiedad para realizar una acción determinada varias veces y aun así conseguir el mismo resultado que se obtendría si se realizase una sola vez.
+
+## Roles
 <pre>
 ansible-galaxy init apache
 </pre>
 
-* Componentes de un rol:
+* **Componentes de un rol:**
   * **defaults**: Data sobre el rol / aplicación (variables por defecto).
   * **files**: Poner ficheros estáticos aquí. Ficheros que copiaremos a los clientes.
   * **handlers**: Tareas que se basan en algunas acciones. Disparadores (Triggers). Ex: si cambias httpd.conf -> reinicia el servicio.
@@ -208,9 +221,6 @@ ansible-playbook masterplaybooks/win_apache.yml --extra-vars="hosts=windows"
 <pre>
 http://localhost/
 </pre>
-
-* Más Ejemplos:
-  * https://geekflare.com/ansible-playbook-windows-example/
 
 * Cómo configurar apache como servicio en linea de comandos:
 <pre>
