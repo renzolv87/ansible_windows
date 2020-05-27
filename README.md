@@ -1,6 +1,6 @@
 - [Windows](#windows)
   * [Preparar el cliente Windows](#preparar-el-cliente-windows)
-  * [En Ansible Master (Linux o WSL)](#en-ansible-master--linux-o-wsl-)
+  * [En Ansible Master (Linux o WSL)](#en-ansible-master-(linux-o-wsl))
   * [Variables a nivel de inventario](#variables-a-nivel-de-inventario)
   * [Ansible vault para encriptar y guardar información sensible](#ansible-vault-para-encriptar-y-guardar-informaci-n-sensible)
   * [Ansible Windows Modules](#ansible-windows-modules)
