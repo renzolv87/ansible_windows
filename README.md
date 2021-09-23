@@ -151,7 +151,7 @@ windows | SUCCESS => {
 </pre>
 
 ## Ansible Windows Modules
- * **Todos:** https://docs.ansible.com/ansible/latest/modules/list_of_windows_modules.html
+ * **Todos:** https://docs.ansible.com/ansible/latest/collections/ansible/windows/index.html
  * **Online:** https://docs.ansible.com/ansible/latest/modules/win_copy_module.html
  * **On server:** ansible-doc win_copy
 
