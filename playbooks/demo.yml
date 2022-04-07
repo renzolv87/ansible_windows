@@ -1,5 +1,5 @@
 ---
-- hosts: nodes
+- hosts: "{{ hosts }}"
   tasks:
   - name: Start Service Spooler
     win_service:
