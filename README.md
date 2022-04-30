@@ -165,6 +165,9 @@ ansible -m win_ping windows --ask-vault-pass
 ansible -m setup nodes
 
 ansible -m win_disk_facts windows | more
+
+//Custom Facts
+https://gist.github.com/dmccuk/ccc62bb63938c432f825760c0b994478
 </pre>
 
 * **Ejecutar modulos Ad-hoc:**
